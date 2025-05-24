@@ -1,90 +1,91 @@
-# Chercheur Chemin
+# PathFinder
 
-## A propos de l'application
+## About the Application
 
-Cette application a ete concue pour aider les voyageurs et voyageuses a trouver le plus court chemin pour parcourir toutes les villes d'une liste de villes a visiter.
-Notre application est specialement concue pour les personnes travaillant dans les sciences, puisqu'elle integre une base de donnees contenant differentes personnes occupant divers roles (Etudiant, MCF, Chercheur) et specialisees dans plusieurs disciplines.
-Nous proposons a l'utilisateur de trier la liste des personnes qu'il souhaite visiter selon differents criteres.
+This application was designed to help travelers find the shortest path to visit all the cities in a given list.
+Our application is especially intended for people working in science, as it integrates a database containing various individuals holding different roles (Student, Lecturer, Researcher) and specializing in several disciplines.
+We allow the user to sort the list of people they wish to visit according to different criteria.
 
 
-## Comment compiler et executer le projet
+## How to Compile and Run the Project
 
-Tout d'abord, clonez le projet depuis GitHub et extrayez le fichier ZIP.
+First, clone the project from GitHub and extract the ZIP file.
 
-Ensuite, afin de pouvoir lancer notre application, en utilisant votre base de donnees PostgreSQL, suivez les etapes suivantes :
+Then, in order to run our application using your PostgreSQL database, follow the steps below:
 
-1) Lancer les requetes contenues dans le fichier `creationBaseDeDonneesVilles.sql`, qui se trouve dans le dossier du projet (`ChercheurChemin`). 
-Ces requetes permettent de creer deux relations initiales : de departements et de villes, ainsi que les requetes pour remplir ces relations.
+1) Run the queries contained in the `creationBaseDeDonneesVilles.sql` file, which is located in the project folder (`ChercheurChemin`). 
+These queries will create two initial relations: departments and cities, as well as populate them with data.
 
-2) Ensuite, allez dans le terminal et placez-vous dans le dossier `ChercheurChemin` (qui se trouve egalement dans le dossier principal du projet - `ChercheurChemin`).
+2) Then, open your terminal and navigate to the `ChercheurChemin` folder (which is also inside the main project folder – `ChercheurChemin`).
 
 ### Compilation
 
-3) Tout d'abord, vous devez vider le dossier contenant les fichiers executables precedemment crees, en utilisant la commande suivante : 
+3) First, you need to clear the folder containing previously generated executable files using the following command:
 ```bash
 rm -r bin
 ```
 
-4) Ensuite, pour compiler le projet, lancez la commande suivante : 
+4) Then, to compile the project, run the following command:
 ```bash
 javac -d bin -cp "lib/postgresql-42.7.4.jar" src/affichage/*.java src/affichage/affichageAlgo/*.java src/affichage/affichageEcosysteme/*.java src/affichage/affichageAlgo/choixPersonne/*.java src/affichage/affichageAlgo/choixVille/*.java src/baseDeDonnees/*.java src/filtrage/*.java src/genetique/*.java src/main/*.java src/objetsAuxiliaires/*.java src/peuple/*.java src/representationSolution/*.java src/territoire/*.java src/verificationEntree/*.java
 ```
 
 ### Execution
 
-5) Pour executer le projet, veuillez lancer la commande suivante : 
+5) To run the project, please use the following command:
 ```bash
 java -cp "bin:lib/*" main.Main
 ```
 
-6) Suivez les indications affichees pour connecter le programme a votre base de donnees.
-Si vous ne connaissez pas l'URL de votre base de donnees, elle est sous la forme :
+6) Follow the instructions displayed to connect the program to your database.
+If you don’t know your database URL, it follows this format:
 jdbc:postgresql://localhost:VOTRE_PORT/NOM_DE_LA_BASE_DE_DONNEE.
 
 ### Execution via Eclipse
 
-Vous pouvez egalement ouvrir le projet dans Eclipse et le lancer directement depuis l'IDE.
+You can also open the project in Eclipse and run it directly from the IDE.
 
 
-## Particularites de notre programme
+## Specific Features of Our Program
 
-Notre programme peut etre utilise a travers le terminal ou via une interface graphique.
-Au lancement, l'utilisateur a le choix entre taper 'terminal' ou 'ui' (pour user interface). Selon son choix, les interactions se feront :
-- Soit via le terminal.
-- Soit via une fenetre graphique qui s'ouvrira automatiquement.
+Our program can be used via the terminal or through a graphical interface.
+At launch, the user is given the choice to type ‘terminal’ or ‘ui’ (for user interface). Based on this choice, the interactions will happen:
+- Either through the terminal.
+- Or via a graphical window that will open automatically.
 
 
-## Fonctionnalites de notre programme
+## Features of Our Program
 
-### Partie Tri 
+### Sorting Functionality
 
-Notre programme propose plusieurs methodes de tri permettant d'organiser la liste des personnes selon differents criteres.
-Les criteres de tri sont les suivant : en fonction de la ville, region, -population et superficie de la ville ou region aussi-, departement, ville chef-lieu, nom prenom, ID, age, disciplines, fonction -mcf,chercheur,etudiants-, nombre d'etudiant -pour les chercheur-, numero de bureau -pour les titulaires-, etudiants -pour les titulaires-, encadrants -pour les etudiants-, sujet de these et annee de these -pour les etudiants-.
-Nous avons essayer de vous donner le plus de criteres de selection possible.
+Our program offers several sorting methods to organize the list of people according to different criteria.
+The sorting criteria are the following: by city, region, – population and area of the city or region as well –, department, capital city, first name, last name, ID, age, disciplines, role – lecturer, researcher, students –, number of students (for researchers), office number (for tenured staff), students (for tenured staff), supervisors (for students), thesis topic and thesis year (for students).
+We tried to give you as many selection criteria as possible.
 
 ### Attention ! 
-Dans la partie selection de l'interface graphique, lorsque vous devez choisir des noms de ville (ou departement, ID, nom, prenom...) ou des personnes, suivez les etapes suivantes :  
-1. Cliquez deux fois sur une proposition pour la selectionner.  
-2. Cliquez sur "Ajouter" pour l'inclure dans la liste.  
-3. Une fois tous les elements souhaites sont ajoutes, cliquez sur "Valider" pour confirmer votre choix.
+
+In the selection part of the graphical interface, when you have to choose city names (or department, ID, name, first name...) or people, please follow these steps: 
+1. Double-click on a suggestion to select it.
+2. Click “Add” to include it in the list. 
+3. Once all desired items are added, click “Validate” to confirm your choice.
 
 
-### Modification de la base de donnees
+### Modifying the Database
 
-Notre programme propose une base de donnees par defaut contenant differentes personnes. Mais vous pouvez la modifier !
-L'utilisateur peut ajouter, supprimer et modifier des personnes autant qu'il le souhaite.
-Certaines regles de coherence sont appliquees pour garantir l'integrite des donnees. Si une action demandee par l'utilisateur n'est pas permise, le programme l'indiquera clairement.
+Our program comes with a default database containing various people. But you can modify it!
+The user can add, delete, and modify people as much as they want.
+Some consistency rules are applied to ensure data integrity. If an action requested by the user is not allowed, the program will clearly indicate it.
 
-### Generation du meilleur chemin
+### Generation of the Best Path
 
-Notre programme propose plusieurs options pour representer le meilleur chemin genere par l'algorithme :
+Our program offers several options to display the best path generated by the algorithm:
 
-Affichage direct :
-Dans la fenetre graphique (si l'interface graphique est utilisee).
-Dans le terminal (si l'option terminal est choisie).
+Direct display:
+In the graphical window (if the graphical interface is used).
+In the terminal (if the terminal option is chosen).
 
-Exportation dans un fichier texte :
-L'utilisateur peut choisir l'emplacement ou enregistrer le fichier text contenant le chemin genere.
+Export to a Text File:
+The user can choose the location where to save the text file containing the generated path.
 
-Exportation dans un fichier html :
-L'utilisateur peut choisir l'emplacement ou enregistrer le fichier html contenant le chemin genere.
+Export to an HTML File:
+The user can choose the location where to save the HTML file containing the generated path.
